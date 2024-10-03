@@ -1,15 +1,12 @@
 package com.luma.base;
 
-import com.luma.pages.BasePage;
-import com.luma.pages.CreateAccountPage;
-import com.luma.pages.HomePage;
-import com.luma.pages.LoginPage;
-import org.junit.AfterClass;
+import com.luma.pages.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
 public class BaseTest {
@@ -19,7 +16,10 @@ public class BaseTest {
     protected static BasePage basePage;
     protected static HomePage homePage;
     protected static LoginPage loginPage;
+    protected static ProductSearchPage productSearchPage;
     protected static CreateAccountPage createAccountPage;
+    protected static ProductInfoPage productInfoPage;
+    protected static CartPage cartPage;
     protected static String URL = "https://magento.softwaretestingboard.com/";
 
     @BeforeMethod
@@ -34,9 +34,12 @@ public class BaseTest {
         loginPage = new LoginPage(driver);
         homePage = new HomePage(driver);
         createAccountPage = new CreateAccountPage(driver);
+        productSearchPage = new ProductSearchPage(driver);
+        productInfoPage = new ProductInfoPage(driver);
+        cartPage = new CartPage(driver);
     }
 
-    @AfterClass
+    @AfterMethod
     public static void tearDown(){
         driver.quit();
     }

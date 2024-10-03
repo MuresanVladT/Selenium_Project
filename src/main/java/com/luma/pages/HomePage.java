@@ -2,6 +2,7 @@ package com.luma.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class HomePage extends BasePage {
 
@@ -9,9 +10,10 @@ public class HomePage extends BasePage {
         super(driver);
     }
 
-    private By greetWelcome = By.xpath("div[class=\"panel header\"] li[class=\"greet welcome\"]");
     private By signInLink = By.xpath("//div[@class=\"panel header\"]//a[contains(text(),\"Sign In\")]");
     private By createAccountLink = By.xpath("//div[@class=\"panel header\"]//a[normalize-space()=\"Create an Account\"]");
+    private By greetWelcome = By.cssSelector("div[class=\"panel header\"] span[class=\"logged-in\"]");
+    private By shopYogaButton = By.xpath("//span[@class=\"action more button\"]");
 
     public boolean isGreetWelcomeTextDisplayed() {
         return find(greetWelcome).isDisplayed();
@@ -23,5 +25,14 @@ public class HomePage extends BasePage {
 
     public void clickCreateAccount() {
         click(createAccountLink);
+    }
+
+    public String getLoginMessage(){
+        wait.until(ExpectedConditions.textToBePresentInElementLocated(greetWelcome,"Welcome, "));
+        return find(greetWelcome).getText();
+    }
+
+    public void shopNewYoga(){
+        click(shopYogaButton);
     }
 }

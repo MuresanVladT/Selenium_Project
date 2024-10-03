@@ -2,9 +2,12 @@ package com.luma.tests.login;
 
 import com.luma.base.BaseTest;
 import org.junit.Assert;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.annotations.Test;
 
 public class LoginTests extends BaseTest {
+    private static final Logger log = LoggerFactory.getLogger(LoginTests.class);
 
     //Negative test:
 
@@ -19,4 +22,14 @@ public class LoginTests extends BaseTest {
     }
 
     //Positive test:
+
+    @Test
+    public void successfulLogin(){
+        homePage.clickSignIn();
+        loginPage.setEmail("test.mail.Test@mail.com");
+        loginPage.setPassword("Password1");
+        loginPage.clickSignIn();
+        String actualMessage = homePage.getLoginMessage();
+        Assert.assertTrue(actualMessage.contains("Welcome"));
+    }
 }
