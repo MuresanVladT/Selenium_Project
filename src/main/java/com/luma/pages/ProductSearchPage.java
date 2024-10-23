@@ -13,13 +13,14 @@ public class ProductSearchPage extends BasePage {
         super(driver);
     }
 
-    private By productItems = By.className("product-item-info");
-    private By productLink = By.className("product-item-link");
-    private By nextPageButton = By.xpath("(//a[contains(@title,'Next')])[2]");
-    private By productList = By.xpath("//ol[@class='products list items product-items']");
+    private final By productItems = By.className("product-item-info");
+    private final By productLink = By.className("product-item-link");
+    private final By nextPageButton = By.xpath("(//a[contains(@title,'Next')])[2]");
+    private final By productList = By.xpath("//ol[@class='products list items product-items']");
+
 
     public WebElement nextPageButton() {
-        FluentWait<WebDriver> wait = new FluentWait<>(getDriver())
+        FluentWait<WebDriver> wait = new FluentWait<>(driver)
                 .withTimeout(Duration.ofSeconds(10))
                 .pollingEvery(Duration.ofMillis(500))
                 .ignoring(NoSuchElementException.class)
@@ -53,6 +54,7 @@ public class ProductSearchPage extends BasePage {
                 if (crtProductName.equals(productName)) {
                     WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(5));
                     wait.until(ExpectedConditions.elementToBeClickable(productNameElement));
+                    scrollToBottom();
                     productNameElement.click();
                     isFound = true;
                     break;

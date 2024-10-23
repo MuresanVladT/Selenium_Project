@@ -10,10 +10,10 @@ public class LoginPage extends BasePage{
         super(driver);
     }
 
-    private By emailField = By.xpath("//input[@id=\"email\"]");
-    private By passwordField = By.xpath("//fieldset[@class=\"fieldset login\"]//input[@id=\"pass\"]");
-    private By SignInButton = By.xpath("//button[contains(@class, 'action login primary')]");
-    private By errorMessage = By.xpath("//div[@class=\"message-error error message\"]");
+    private final By emailField = By.xpath("//input[@id=\"email\"]");
+    private final By passwordField = By.xpath("//fieldset[@class=\"fieldset login\"]//input[@id=\"pass\"]");
+    private final By SignInButton = By.xpath("//button[contains(@class, 'action login primary')]");
+    private final By errorMessage = By.xpath("//div[@class=\"message-error error message\"]");
 
     public void setEmail(String email){
         set(emailField, email);

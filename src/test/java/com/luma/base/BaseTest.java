@@ -11,7 +11,7 @@ import org.testng.annotations.BeforeMethod;
 
 public class BaseTest {
 
-    private static final Logger log = LoggerFactory.getLogger(BaseTest.class);
+    public static final Logger log = LoggerFactory.getLogger(BaseTest.class);
     protected static WebDriver driver;
     protected static BasePage basePage;
     protected static HomePage homePage;
@@ -20,6 +20,7 @@ public class BaseTest {
     protected static CreateAccountPage createAccountPage;
     protected static ProductInfoPage productInfoPage;
     protected static CartPage cartPage;
+    protected static CheckoutPage checkoutPage;
     protected static String URL = "https://magento.softwaretestingboard.com/";
 
     @BeforeMethod
@@ -37,10 +38,11 @@ public class BaseTest {
         productSearchPage = new ProductSearchPage(driver);
         productInfoPage = new ProductInfoPage(driver);
         cartPage = new CartPage(driver);
+        checkoutPage = new CheckoutPage(driver);
     }
 
     @AfterMethod
-    public static void tearDown(){
+    public static void tearDown() {
         driver.quit();
     }
 }

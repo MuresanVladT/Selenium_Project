@@ -9,12 +9,14 @@ public class CartPage extends BasePage{
         super(driver);
     }
 
-    private By productName = By.xpath("//strong[@class='product-item-name']/a");
-    private By productQty = By.xpath("//input[@title=\"Qty\"]");
-    private By showCartButton = By.xpath("//a[@class=\"action showcart\"]");
-    private By editCartButton = By.xpath("//span[normalize-space()=\"View and Edit Cart\"]");
+    private final By productName = By.xpath("//td//div[contains(@class, 'product-item-details')]//strong");
+    private final By productQty = By.xpath("//input[@title=\"Qty\"]");
+    private final By showCartButton = By.xpath("//a[@class=\"action showcart\"]");
+    private final By editCartButton = By.xpath("//span[normalize-space()=\"View and Edit Cart\"]");
+    private final By checkoutButton = By.xpath("//button[@data-role='proceed-to-checkout']");
 
     public String getProductName(){
+        goToElement(productName);
         return wait.until(ExpectedConditions.visibilityOfElementLocated(productName)).getText();
     }
 
@@ -30,4 +32,9 @@ public class CartPage extends BasePage{
         click(showCartButton);
         click(editCartButton);
     }
+
+    public void proceedToCheckout(){
+        click(checkoutButton);
+    }
+
 }

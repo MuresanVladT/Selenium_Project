@@ -8,8 +8,8 @@ public class ProductInfoPage extends BasePage{
         super(driver);
     }
 
-    private By addToCartButton = By.xpath("//button[@id=\"product-addtocart-button\"]");
-    private By qtyField = By.xpath("//input[@id=\"qty\"]");
+    private final By addToCartButton = By.xpath("//button[@id=\"product-addtocart-button\"]");
+    private final By qtyField = By.xpath("//input[@id=\"qty\"]");
 
     public void clickAddToCart(){
         click(addToCartButton);

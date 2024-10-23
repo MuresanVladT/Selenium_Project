@@ -9,15 +9,15 @@ public class CreateAccountPage extends BasePage{
         super(driver);
     }
 
-    private By firstNameField = By.xpath("//input[@id=\"firstname\"]");
-    private By lastNameField = By.xpath("//input[@id=\"lastname\"]");
-    private By emailField = By.xpath("//input[@id=\"email_address\"]");
-    private By passwordField = By.xpath("//input[@id=\"password\"]");
-    private By confirmPasswordField = By.xpath("//input[@id=\"password-confirmation\"]");
-    private By createAccountButton = By.xpath("//button[contains(@title, \"Create an Account\")]");
-    private By successMessage = By.xpath("//div[@class=\"message-success success message\"]");
-    private By emailErrorMessage = By.xpath("//div[@id=\"email_address-error\"]");
-    private By passwordConfirmationError = By.xpath("//div[@id=\"password-confirmation-error\"]");
+    private final By firstNameField = By.xpath("//input[@id=\"firstname\"]");
+    private final By lastNameField = By.xpath("//input[@id=\"lastname\"]");
+    private final By emailField = By.xpath("//input[@id=\"email_address\"]");
+    private final By passwordField = By.xpath("//input[@id=\"password\"]");
+    private final By confirmPasswordField = By.xpath("//input[@id=\"password-confirmation\"]");
+    private final By createAccountButton = By.xpath("//button[contains(@title, \"Create an Account\")]");
+    private final By successMessage = By.xpath("//div[@class=\"message-success success message\"]");
+    private final By emailErrorMessage = By.xpath("//div[@id=\"email_address-error\"]");
+    private final By passwordConfirmationError = By.xpath("//div[@id=\"password-confirmation-error\"]");
 
     public void setFirstName(String firstName){
         set(firstNameField, firstName);
