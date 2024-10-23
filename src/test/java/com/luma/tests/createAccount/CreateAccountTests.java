@@ -16,8 +16,7 @@ public class CreateAccountTests extends BaseTest {
         createAccountPage.setEmail(basePage.uniqueEmail());
         createAccountPage.setPasswordAndConfirm(basePage.uniquePassword());
         createAccountPage.clickCreateAccount();
-        String actualMessage = createAccountPage.getSuccessMessage();
-        Assert.assertTrue(actualMessage.contains("Thank you for registering"));
+        Assert.assertTrue(createAccountPage.getSuccessMessage().contains("Thank you for registering"));
     }
 
     //Negative tests:
@@ -32,8 +31,7 @@ public class CreateAccountTests extends BaseTest {
         createAccountPage.setEmail("EmailAddress");
         createAccountPage.setPasswordAndConfirm(basePage.uniquePassword());
         createAccountPage.clickCreateAccount();
-        String actualMessage = createAccountPage.getEmailError();
-        Assert.assertTrue(actualMessage.contains("Please enter a valid email address"));
+        Assert.assertTrue(createAccountPage.getEmailError().contains("Please enter a valid email address"));
     }
 
     //Incorrect password confirmation:
@@ -47,7 +45,6 @@ public class CreateAccountTests extends BaseTest {
         createAccountPage.setPassword("Password1");
         createAccountPage.confirmPassword("Password");
         createAccountPage.clickCreateAccount();
-        String actualMessage = createAccountPage.getPasswordError();
-        Assert.assertTrue(actualMessage.contains("Please enter the same value"));
+        Assert.assertTrue(createAccountPage.getPasswordError().contains("Please enter the same value"));
     }
 }

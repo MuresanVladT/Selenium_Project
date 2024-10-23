@@ -17,8 +17,7 @@ public class LoginTests extends BaseTest {
         loginPage.setEmail("invalid@mail.com");
         loginPage.setPassword("invalidPassword");
         loginPage.clickSignIn();
-        String actualMessage = loginPage.getErrorMessage();
-        Assert.assertTrue(actualMessage.contains("The account sign-in was incorrect"));
+        Assert.assertTrue(loginPage.getErrorMessage().contains("The account sign-in was incorrect"));
     }
 
     //Positive test:
@@ -29,7 +28,6 @@ public class LoginTests extends BaseTest {
         loginPage.setEmail("test.mail.Test@mail.com");
         loginPage.setPassword("Password1");
         loginPage.clickSignIn();
-        String actualMessage = homePage.getLoginMessage();
-        Assert.assertTrue(actualMessage.contains("Welcome"));
+        Assert.assertTrue(homePage.getLoginMessage().contains("Welcome"));
     }
 }
