@@ -1,6 +1,7 @@
 package com.luma.pages;
 
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -39,6 +40,11 @@ public class BasePage {
         find(locator).click();
     }
 
+    public void forceClick(WebElement element) {
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+        jsExecutor.executeScript("arguments[0].click();", element);
+    }
+
     public String uniqueEmail() {
         long currentTimeMillis = System.currentTimeMillis();
         return STR."\{currentTimeMillis}@mail.com";
@@ -66,5 +72,11 @@ public class BasePage {
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.until(ExpectedConditions.elementToBeClickable(element));
+    }
+
+    public void hooverOverElement(By locator){
+        WebElement element = find(locator);
+        Actions actions = new Actions(driver);
+        actions.moveToElement(element).perform();
     }
 }

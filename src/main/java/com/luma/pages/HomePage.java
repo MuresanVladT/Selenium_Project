@@ -14,6 +14,9 @@ public class HomePage extends BasePage {
     private final By createAccountLink = By.xpath("//div[@class=\"panel header\"]//a[normalize-space()=\"Create an Account\"]");
     private final By greetWelcome = By.cssSelector("div[class=\"panel header\"] span[class=\"logged-in\"]");
     private final By shopYogaButton = By.xpath("//span[@class=\"action more button\"]");
+    private final By menTab = By.xpath("//*[@id='ui-id-5']");
+    private final By menTops = By.xpath("//*[@id='ui-id-17']");
+    private final By menJackets = By.xpath("//*[@id='ui-id-19']");
 
     public boolean isGreetWelcomeTextDisplayed() {
         return find(greetWelcome).isDisplayed();
@@ -34,5 +37,15 @@ public class HomePage extends BasePage {
 
     public void shopNewYoga(){
         click(shopYogaButton);
+    }
+
+    public void goToMenTops(){
+        hooverOverElement(menTab);
+        hooverOverElement(menTops);
+    }
+
+    public void goToMenJackets(){
+        goToMenTops();
+        find(menJackets).click();
     }
 }

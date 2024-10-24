@@ -21,6 +21,7 @@ public class BaseTest {
     protected static ProductInfoPage productInfoPage;
     protected static CartPage cartPage;
     protected static CheckoutPage checkoutPage;
+    protected static ReviewPage reviewPage;
     protected static String URL = "https://magento.softwaretestingboard.com/";
 
     @BeforeMethod
@@ -39,6 +40,7 @@ public class BaseTest {
         productInfoPage = new ProductInfoPage(driver);
         cartPage = new CartPage(driver);
         checkoutPage = new CheckoutPage(driver);
+        reviewPage = new ReviewPage(driver);
     }
 
     @AfterMethod
