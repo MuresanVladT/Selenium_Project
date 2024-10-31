@@ -17,6 +17,9 @@ public class HomePage extends BasePage {
     private final By menTab = By.xpath("//*[@id='ui-id-5']");
     private final By menTops = By.xpath("//*[@id='ui-id-17']");
     private final By menJackets = By.xpath("//*[@id='ui-id-19']");
+    private final By whatsNewTab = By.cssSelector("#ui-id-3");
+    private final By gearTab = By.cssSelector("#ui-id-6");
+    private final By watchesTab = By.cssSelector("#ui-id-27");
 
     public boolean isGreetWelcomeTextDisplayed() {
         return find(greetWelcome).isDisplayed();
@@ -47,5 +50,14 @@ public class HomePage extends BasePage {
     public void goToMenJackets(){
         goToMenTops();
         find(menJackets).click();
+    }
+
+    public void clickWhatsNew(){
+        find(whatsNewTab).click();
+    }
+
+    public void goToWatches(){
+        hooverOverElement(gearTab);
+        find(watchesTab).click();
     }
 }
