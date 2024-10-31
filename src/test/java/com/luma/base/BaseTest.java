@@ -26,13 +26,17 @@ public class BaseTest {
     protected static String URL = "https://magento.softwaretestingboard.com/";
 
     @BeforeMethod
-    public static void setUp(){
+    public void setUp() {
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("--incognito");
         chromeOptions.addArguments("start-maximized");
         chromeOptions.addArguments("--disable-search-engine-choice-screen");
         driver = new ChromeDriver(chromeOptions);
         driver.get(URL);
+        initializePages();
+    }
+
+    private void initializePages() {
         basePage = new BasePage(driver);
         loginPage = new LoginPage(driver);
         homePage = new HomePage(driver);
@@ -44,6 +48,7 @@ public class BaseTest {
         reviewPage = new ReviewPage(driver);
         compareProductsPage = new CompareProductsPage(driver);
     }
+
 
     @AfterMethod
     public static void tearDown() {
