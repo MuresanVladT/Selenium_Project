@@ -1,19 +1,20 @@
 package com.luma.tests.login;
 
 import com.luma.base.BaseTest;
+import com.luma.pages.LoginPage;
 import org.junit.Assert;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.testng.annotations.Test;
 
 public class LoginTests extends BaseTest {
-    private static final Logger log = LoggerFactory.getLogger(LoginTests.class);
+
+    protected static LoginPage loginPage;
 
     //Negative test:
 
     @Test
     public void testLoginErrorMessage() {
         homePage.clickSignIn();
+        loginPage = new LoginPage(driver);
         loginPage.setEmail("invalid@mail.com");
         loginPage.setPassword("invalidPassword");
         loginPage.clickSignIn();
@@ -25,6 +26,7 @@ public class LoginTests extends BaseTest {
     @Test
     public void successfulLogin(){
         homePage.clickSignIn();
+        loginPage = new LoginPage(driver);
         loginPage.setEmail("test.mail.Test@mail.com");
         loginPage.setPassword("Password1");
         loginPage.clickSignIn();

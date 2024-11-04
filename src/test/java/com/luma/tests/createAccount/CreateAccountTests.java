@@ -1,16 +1,21 @@
 package com.luma.tests.createAccount;
 
 import com.luma.base.BaseTest;
+import com.luma.pages.CreateAccountPage;
+import com.luma.pages.HomePage;
 import org.junit.Assert;
 import org.testng.annotations.Test;
 
 public class CreateAccountTests extends BaseTest {
+
+    protected static CreateAccountPage createAccountPage;
 
     //Positive test:
 
     @Test
     public void createNewAccount(){
         homePage.clickCreateAccount();
+        createAccountPage = new CreateAccountPage(driver);
         createAccountPage.setFirstName(basePage.uniqueName());
         createAccountPage.setLastName(basePage.uniqueName());
         createAccountPage.setEmail(basePage.uniqueEmail());
@@ -26,6 +31,7 @@ public class CreateAccountTests extends BaseTest {
     @Test
     public void createNewAccountInvalidEmail(){
         homePage.clickCreateAccount();
+        createAccountPage = new CreateAccountPage(driver);
         createAccountPage.setFirstName(basePage.uniqueName());
         createAccountPage.setLastName(basePage.uniqueName());
         createAccountPage.setEmail("EmailAddress");
@@ -39,6 +45,7 @@ public class CreateAccountTests extends BaseTest {
     @Test
     public void createNewAccountWrongConfirmation(){
         homePage.clickCreateAccount();
+        createAccountPage = new CreateAccountPage(driver);
         createAccountPage.setFirstName(basePage.uniqueName());
         createAccountPage.setLastName(basePage.uniqueName());
         createAccountPage.setEmail(basePage.uniqueEmail());
