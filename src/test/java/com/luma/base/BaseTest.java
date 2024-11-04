@@ -1,6 +1,8 @@
 package com.luma.base;
 
-import com.luma.pages.*;
+
+import com.luma.pages.BasePage;
+import com.luma.pages.HomePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -15,14 +17,6 @@ public class BaseTest {
     protected static WebDriver driver;
     protected static BasePage basePage;
     protected static HomePage homePage;
-    protected static LoginPage loginPage;
-    protected static ProductSearchPage productSearchPage;
-    protected static CreateAccountPage createAccountPage;
-    protected static ProductInfoPage productInfoPage;
-    protected static CartPage cartPage;
-    protected static CheckoutPage checkoutPage;
-    protected static ReviewPage reviewPage;
-    protected static CompareProductsPage compareProductsPage;
     protected static String URL = "https://magento.softwaretestingboard.com/";
 
     @BeforeMethod
@@ -33,22 +27,9 @@ public class BaseTest {
         chromeOptions.addArguments("--disable-search-engine-choice-screen");
         driver = new ChromeDriver(chromeOptions);
         driver.get(URL);
-        initializePages();
-    }
-
-    private void initializePages() {
         basePage = new BasePage(driver);
-        loginPage = new LoginPage(driver);
         homePage = new HomePage(driver);
-        createAccountPage = new CreateAccountPage(driver);
-        productSearchPage = new ProductSearchPage(driver);
-        productInfoPage = new ProductInfoPage(driver);
-        cartPage = new CartPage(driver);
-        checkoutPage = new CheckoutPage(driver);
-        reviewPage = new ReviewPage(driver);
-        compareProductsPage = new CompareProductsPage(driver);
     }
-
 
     @AfterMethod
     public static void tearDown() {
